@@ -1,4 +1,4 @@
-const Oxide = require('./Bot')
+const Bot = require('./Bot')
 const client = new Oxide();
 const Discord = require('discord.js')
 
@@ -11,7 +11,7 @@ app.get("/", (request, response) => {
 });
 app.listen(process.env.PORT);
 setInterval(() => {
-  http.get(`http://kek.sohamarts.repl.co`);
+  http.get(`some.link`);
 }, 280000);
 
 const fs = require("fs");
@@ -39,19 +39,15 @@ fs.readdir("./commands/", (err, files) => {
 client.on('ready', async () => {
   console.log('Online!')
 })
-const kektus = "480939855476686849"
 
 client.on('message', async (message) => {
   if (message.author.bot || message.channel.type === "dm") return;
-  client.db.delete('blacklisted')
-  if (message.guild.id === "480939855476686849"){
   if (message.content.includes(":kek:")) {
     client.db.add(`kek_${message.author.id}`, 1)
   }
-  console.log(message.author.tag + " " + client.db.get(`kek_${message.author.id}`))
-  } 
+} 
 
-   let prefix = "o.";
+   let prefix = "prefix";
   let messageArray = message.content.split(" ");
   let cmd = messageArray[0];
   let args = messageArray.slice(1);
